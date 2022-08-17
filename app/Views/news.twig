@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>News</title>
+    <link rel="stylesheet" href="/app/Views/css/news.scss">
+</head>
+<body>
+<a href="/?category=sports">Sports</a>
+<a href="/?category=health">Tesla</a>
+{% for article in news %}
+    <div class="article">
+    <div>
+        {{ article.title }}
+    </div>
+    <div>
+        {{ article.author }}
+    </div>
+    <div>
+        <img id="article-image" src="{{ article.urlToImage }}" alt="No image" >
+    </div>
+    <div>
+        {{ article.description }}
+    </div>
+    </div>
+{% endfor %}
+</body>
+</html>

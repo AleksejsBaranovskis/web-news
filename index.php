@@ -35,11 +35,11 @@ switch ($routeInfo[0]) {
         [$controller, $method] = explode("@", $handler);
 
         $container = new DI\Container();
-//        $container->set(\App\Repositories\UsersRepository::class, \DI\create(\App\Repositories\MySQLUsersRepository::class));
+        $container->set(\App\Repositories\NewsRepository::class, \DI\create(\App\Repositories\NewsAPIRepository::class));
 
         $response = ($container->get($controller)->$method());
 
-        $loader = new \Twig\Loader\FilesystemLoader('app/View');
+        $loader = new \Twig\Loader\FilesystemLoader('app/Views');
         $twig = new \Twig\Environment($loader);
 //        $twig->addGlobal('errors', $_SESSION['errors'] ?? []);
 

@@ -7,7 +7,7 @@ class View
     private string $pathToTemplate;
     private array $data;
 
-    public function __construct(string $pathToTemplate, array $data)
+    public function __construct(string $pathToTemplate, array $data = [])
     {
         $this->pathToTemplate = $pathToTemplate;
         $this->data = $data;
