@@ -9,6 +9,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/', 'App\Controllers\NewsController@show');
     $r->addRoute('GET', '/news', 'App\Controllers\NewsController@show');
     $r->addRoute('GET', '/create', 'App\Controllers\NewsController@create');
+    $r->addRoute('GET', '/forecast', 'App\Controllers\ForecastController@show');
 
 });
 
@@ -37,6 +38,7 @@ switch ($routeInfo[0]) {
 
         $container = new DI\Container();
         $container->set(\App\Repositories\NewsRepository::class, \DI\create(\App\Repositories\NewsAPIRepository::class));
+        $container->set(\App\Repositories\ForecastRepository::class, \DI\create(\App\Repositories\ForecastAPIRepository::class));
 
         $response = ($container->get($controller)->$method());
 
