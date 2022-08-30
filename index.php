@@ -8,6 +8,7 @@ $env->load();
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', 'App\Controllers\NewsController@show');
     $r->addRoute('GET', '/news', 'App\Controllers\NewsController@show');
+    $r->addRoute('GET', '/create', 'App\Controllers\NewsController@create');
 
 });
 
@@ -41,7 +42,6 @@ switch ($routeInfo[0]) {
 
         $loader = new \Twig\Loader\FilesystemLoader('app/Views');
         $twig = new \Twig\Environment($loader);
-//        $twig->addGlobal('errors', $_SESSION['errors'] ?? []);
 
         if ($response instanceof \App\View) {
             $template = $twig->load($response->getPathToTemplate());
@@ -49,8 +49,5 @@ switch ($routeInfo[0]) {
             exit;
         }
 
-//        if ($response instanceof \App\Redirect) {
-//            header('Location: ' . $response->getLocation());
-//        }
         break;
 }

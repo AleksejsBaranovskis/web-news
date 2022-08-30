@@ -19,4 +19,9 @@ class NewsController
         $q = $_GET['category'] ?? 'business';
         return new View ('news.twig', ['news' => $this->newsService->getAll($q)->getArticles()]);
     }
+
+    public function create(): View
+    {
+        return new View ('add-article.twig');
+    }
 }
