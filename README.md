@@ -1,7 +1,8 @@
 # Web news
 ---
-My first simple web project with news about technologies and weather forecast.
+### My first simple web project about news and weather forecast.
 
+---
 Use requirements:
 1. PHP installed
 2. Composer installed
@@ -17,4 +18,8 @@ composer install
 2. Create .env file
 3. Copy content from .env.example
 4. Enter your generated API keys into according fields
-5. Run your host
+5. Create table in MySQL database with following columns and column types('id' column is not null, Auto inc, Primary key)
+
+![Screenshot](MySQLTable.png)
+
+6. Run your host
