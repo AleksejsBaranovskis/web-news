@@ -23,3 +23,5 @@ composer install
 ![Screenshot](MySQLTable.png)
 
 6. Run your host
+
+![gif](web-news.gif)
