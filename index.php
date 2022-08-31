@@ -1,6 +1,7 @@
 <?php
 
 require_once 'vendor/autoload.php';
+session_start();
 
 $env = Dotenv\Dotenv::createImmutable(__DIR__);
 $env->load();
@@ -10,6 +11,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/news', 'App\Controllers\NewsController@show');
     $r->addRoute('GET', '/create', 'App\Controllers\NewsController@create');
     $r->addRoute('GET', '/forecast', 'App\Controllers\ForecastController@show');
+    $r->addRoute('POST', '/forecast', 'App\Controllers\ForecastController@city');
 
 });
 
@@ -44,6 +46,8 @@ switch ($routeInfo[0]) {
 
         $loader = new \Twig\Loader\FilesystemLoader('app/Views');
         $twig = new \Twig\Environment($loader);
+
+
 
         if ($response instanceof \App\View) {
             $template = $twig->load($response->getPathToTemplate());

@@ -10,21 +10,19 @@ class ForecastAPIRepository implements ForecastRepository
 {
     public function getData(): ForecastCollection
     {
-//        $client = new Client([
-//            'base_uri' => $_ENV['FORECAST_API']
-//        ]);
-        $client = new Client();
-        $response = $client->get('http://api.weatherapi.com/v1/forecast.json?key=7d7ce322474a478d8ed85730222107&q=Riga&days=1&aqi=no&alerts=no');
+        $client = new Client([
+            'base_uri' => $_ENV['FORECAST_API']
+        ]);
 
-//        $response = $client->get('/v1/forecast.json', [
-//            'query' => [
-//                'key' => $_ENV['FORECAST_API_KEY'],
-//                'q' => 'Riga',
-//                'days' => 1,
-//                'aqi' => 'no',
-//                'alerts' => 'no'
-//            ]
-//        ]);
+        $response = $client->get('/v1/forecast.json', [
+            'query' => [
+                'key' => $_ENV['FORECAST_API_KEY'],
+                'q' => $_SESSION['city'],
+                'days' => 1,
+                'aqi' => 'no',
+                'alerts' => 'no'
+            ]
+        ]);
 
         $forecast = json_decode($response->getBody());
         $weatherForecast= [];
@@ -33,6 +31,9 @@ class ForecastAPIRepository implements ForecastRepository
                 $hourlyForecast->time,
                 $hourlyForecast->temp_c,
                 $hourlyForecast->humidity,
+                $hourlyForecast->wind_kph,
+                $hourlyForecast->cloud,
+                $hourlyForecast->condition->icon
             );
         }
         return new ForecastCollection($weatherForecast);
