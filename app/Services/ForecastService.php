@@ -14,8 +14,8 @@ class ForecastService
         $this->forecastRepository = $forecastRepository;
     }
 
-    public function execute(): ForecastCollection
+    public function execute(string $city): ForecastCollection
     {
-        return $this->forecastRepository->getData();
+        return $this->forecastRepository->getData($city);
     }
 }

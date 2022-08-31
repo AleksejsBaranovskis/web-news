@@ -20,7 +20,7 @@ class ArticlesCommand
         $articles = $this->newsService->getAll($category)->getArticles();
 
         foreach ($articles as $article) {
-           echo $article->getTitle() . PHP_EOL;
+            echo $article->getTitle() . PHP_EOL;
         }
         return 1;
     }

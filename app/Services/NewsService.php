@@ -13,8 +13,9 @@ class NewsService
     {
         $this->newsRepository = $newsRepository;
     }
+
     public function getAll(string $q): ArticlesCollection
     {
-       return $this->newsRepository->getAll($q);
+        return $this->newsRepository->getAll($q);
     }
 }

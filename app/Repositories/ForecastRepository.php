@@ -6,5 +6,5 @@ use App\Models\ForecastCollection;
 
 interface ForecastRepository
 {
-    public function getData(): ForecastCollection;
+    public function getData(string $city): ForecastCollection;
 }

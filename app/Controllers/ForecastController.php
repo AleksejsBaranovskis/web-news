@@ -18,8 +18,9 @@ class ForecastController
 
     public function show(): View
     {
+        $city = $_SESSION['city'] ?? 'Riga';
         return new View ('forecast.twig', [
-            'forecast' => $this->forecastService->execute()->getForecast(),
+            'forecast' => $this->forecastService->execute($city)->getForecast(),
             'city' => $_SESSION['city']
         ]);
     }

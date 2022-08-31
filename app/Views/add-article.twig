@@ -30,7 +30,7 @@
     </div>
 </nav>
 <div class="add-article">
-    <form class="add-article-form" action="" method="post">
+    <form class="add-article-form" action="/news" method="post">
         <label for="title">
             <input class="form-input" type="text" id="title" name="title" placeholder="Title">
         </label>
@@ -41,13 +41,14 @@
             <input class="form-input" type="text" id="image" name="image" placeholder="Url to image">
         </label>
         <label for="description">
-            <textarea class="form-input" name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+            <textarea class="form-input" name="description" id="description" cols="30" rows="10"
+                      placeholder="Description"></textarea>
         </label>
         <label for="url">
             <input class="form-input" type="text" id="url" name="url" placeholder="Source link">
         </label>
         <div class="button">
-        <button class="form-button">Add</button>
+            <button class="form-button">Add</button>
         </div>
     </form>
 </div>

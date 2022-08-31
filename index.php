@@ -8,8 +8,10 @@ $env->load();
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', 'App\Controllers\NewsController@show');
+    $r->addRoute('GET', '/news/created', 'App\Controllers\NewsController@created');
     $r->addRoute('GET', '/news', 'App\Controllers\NewsController@show');
-    $r->addRoute('GET', '/create', 'App\Controllers\NewsController@create');
+    $r->addRoute('GET', '/news/create', 'App\Controllers\NewsController@create');
+    $r->addRoute('POST', '/news', 'App\Controllers\NewsController@store');
     $r->addRoute('GET', '/forecast', 'App\Controllers\ForecastController@show');
     $r->addRoute('POST', '/forecast', 'App\Controllers\ForecastController@city');
 
@@ -47,13 +49,10 @@ switch ($routeInfo[0]) {
         $loader = new \Twig\Loader\FilesystemLoader('app/Views');
         $twig = new \Twig\Environment($loader);
 
-
-
         if ($response instanceof \App\View) {
             $template = $twig->load($response->getPathToTemplate());
             echo $template->render($response->getData());
             exit;
         }
-
         break;
 }

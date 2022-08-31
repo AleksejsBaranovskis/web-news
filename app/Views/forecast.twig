@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/app/Views/css/forecast.scss">
 </head>
 <body>
- <nav class="navbar navbar-expand-lg bg-light fixed-top">
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
     <div class="container-fluid">
         <img class="nav-icon" src="https://www.svgrepo.com/show/281516/news-broadcast.svg" alt="Icon">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -23,19 +23,19 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="/">News</a>
                 <a class="nav-link active" href="#">Forecast</a>
-                <a class="nav-link" href="/create">Add article</a>
+                <a class="nav-link" href="/news/create">Add article</a>
                 <a class="nav-link" href="#contacts">Contacts</a>
             </div>
         </div>
     </div>
- </nav>
- <div class="city">
-     <form action="/forecast" method="post">
-         <input type="text" class="city-input form-control input-sm" name="city" placeholder="City" />
-         <button type="submit" class="button-city btn btn-primary btn-sm">Search</button>
-     </form>
- </div>
- <div class="forecast-city">{{ city }} weather forecast for today</div>
+</nav>
+<div class="city">
+    <form action="/forecast" method="post">
+        <input type="text" class="city-input form-control input-sm" name="city" placeholder="City"/>
+        <button type="submit" class="button-city btn btn-primary btn-sm">Search</button>
+    </form>
+</div>
+<div class="forecast-city">{{ city }} weather forecast for today</div>
 <div class="weather-table">
     <table>
         <thead>
@@ -50,16 +50,16 @@
         </thead>
         {% for weatherReport in forecast %}
             {% if weatherReport.isCurrentHour %}
-            <tbody style="font-size: larger; background-color: #5b5bfc">
-            <tr>
-                <td>{{ weatherReport.time }}</td>
-                <td>{{ weatherReport.temperature }}°C</td>
-                <td>{{ weatherReport.humidity }}%</td>
-                <td>{{ weatherReport.wind }}km/h</td>
-                <td>{{ weatherReport.cloud }}%</td>
-                <td><img src="{{ weatherReport.icon }}" alt="icon"></td>
-            </tr>
-            </tbody>
+                <tbody style="font-size: larger; background-color: #5b5bfc">
+                <tr>
+                    <td>{{ weatherReport.time }}</td>
+                    <td>{{ weatherReport.temperature }}°C</td>
+                    <td>{{ weatherReport.humidity }}%</td>
+                    <td>{{ weatherReport.wind }}km/h</td>
+                    <td>{{ weatherReport.cloud }}%</td>
+                    <td><img src="{{ weatherReport.icon }}" alt="icon"></td>
+                </tr>
+                </tbody>
             {% else %}
                 <tbody>
                 <tr>
@@ -71,7 +71,7 @@
                     <td><img src="{{ weatherReport.icon }}" alt="icon"></td>
                 </tr>
                 </tbody>
-                {% endif %}
+            {% endif %}
         {% endfor %}
     </table>
 </div>

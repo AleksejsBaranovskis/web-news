@@ -37,4 +37,9 @@ class NewsAPIRepository implements NewsRepository
         }
         return new ArticlesCollection($articles);
     }
+
+    public function save(Article $article): void
+    {
+        // TODO: Implement save() method.
+    }
 }

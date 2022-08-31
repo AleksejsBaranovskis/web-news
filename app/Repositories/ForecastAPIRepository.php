@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 
 class ForecastAPIRepository implements ForecastRepository
 {
-    public function getData(): ForecastCollection
+    public function getData(string $city): ForecastCollection
     {
         $client = new Client([
             'base_uri' => $_ENV['FORECAST_API']
@@ -17,7 +17,7 @@ class ForecastAPIRepository implements ForecastRepository
         $response = $client->get('/v1/forecast.json', [
             'query' => [
                 'key' => $_ENV['FORECAST_API_KEY'],
-                'q' => $_SESSION['city'],
+                'q' => $city,
                 'days' => 1,
                 'aqi' => 'no',
                 'alerts' => 'no'
@@ -25,7 +25,7 @@ class ForecastAPIRepository implements ForecastRepository
         ]);
 
         $forecast = json_decode($response->getBody());
-        $weatherForecast= [];
+        $weatherForecast = [];
         foreach ($forecast->forecast->forecastday[0]->hour as $hourlyForecast) {
             $weatherForecast [] = new Forecast(
                 $hourlyForecast->time,
